@@ -14,6 +14,13 @@
 
 #define NUM_OF_PORTS 6
 
+#define UART_PORT1 &huart4
+#define UART_PORT2 &huart2
+#define UART_PORT3 &huart6
+#define UART_PORT4 &huart1
+#define UART_PORT5 &huart5
+#define UART_PORT6 &huart3
+
 enum Port_e {
 	P1 = 0, P2, P3, P4, P5, P6
 };
@@ -34,6 +41,9 @@ typedef struct {
 
 extern const map_entry_t module_tx_map[];
 extern const size_t module_tx_map_len;
+
+extern uint8_t port_mem_buf[100][NUM_OF_PORTS];
+extern uint8_t staging_buf[100];
 
 void MapTx_Start(void);
 void MapTx_Setup(void);

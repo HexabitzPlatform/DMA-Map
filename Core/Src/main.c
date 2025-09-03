@@ -46,8 +46,8 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-uint8_t RxBuffer[1000] = { 0 };
-uint8_t TxBuffer[10] = { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 };
+//uint8_t RxBuffer[1000] = { 0 };
+//uint8_t TxBuffer[10] = { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 };
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -58,6 +58,42 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
+
+
+/* ==== Module 1 (source) ==== */
+ uint8_t src_buf[120] = { [0 ... 119] = 100 };
+
+const map_entry_t module_tx_map[] = {
+    { MEM_TO_PORT, .dst = UART_PORT4, .mem = src_buf, .size = 120 }
+};
+
+/* ==== Module 2 ==== */
+/* Topology: P6 receives from Module 1 P4.
+   Then: store first 40, forward next 40 to Module 3 via P2,
+         forward last 40 to Module 4 via P4. */
+//const map_entry_t module_tx_map[] = {
+//    // First 40 bytes → store
+//    { PORT_TO_MEM, .src = UART_PORT6, .mem = port_mem_buf[P6], .size = 40 },
+//
+//    // Next 40 bytes → forward to Module 3 (Module 3 listens on P5)
+//    { FWD_TO_PORT, .src = UART_PORT6, .dst = UART_PORT2, .size = 40 },
+//
+//    // Final 40 bytes → forward to Module 4 (Module 4 listens on P5)
+//    { FWD_TO_PORT, .src = UART_PORT6, .dst = UART_PORT4, .size = 40 },
+//};
+
+/* Module 3 : */
+//const map_entry_t module_tx_map[] = {
+//    { PORT_TO_MEM, .src = UART_PORT5, .mem = port_mem_buf[P5], .size = 40 }
+//};
+
+/* Module 4 : */
+//const map_entry_t module_tx_map[] = {
+//    { PORT_TO_MEM, .src = UART_PORT5, .mem = port_mem_buf[P5], .size = 40 }
+//};
+
+const size_t module_tx_map_len = sizeof(module_tx_map) / sizeof(module_tx_map[0]);
 
 /* USER CODE END 0 */
 
@@ -98,7 +134,7 @@ int main(void)
   MX_USART5_UART_Init();
   MX_USART6_UART_Init();
   /* USER CODE BEGIN 2 */
-	HAL_UARTEx_ReceiveToIdle_DMA(&huart2, RxBuffer, 1000);
+//	HAL_UARTEx_ReceiveToIdle_DMA(&huart2, RxBuffer, 1000);
 //  HAL_UART_Receive_DMA(&huart2, RxBuffer, 1000);
 
     // Start the TX phase
