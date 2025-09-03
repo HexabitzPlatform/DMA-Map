@@ -23,6 +23,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 /* USER CODE END Includes */
+#include "dma_map.h"
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN TD */
@@ -44,6 +45,9 @@
 uint8_t FullInit = 0;
 uint8_t HalfInit = 0;
 uint8_t IdleInit = 0;
+
+//extern uint8_t buf_p3[1000];
+//extern uint8_t buf_pmem[1000];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -255,20 +259,20 @@ void HAL_UART_RxHalfCpltCallback(UART_HandleTypeDef *huart) {
 
 }
 
-void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size) {
-	IdleInit++;
-
-	if (huart->Instance == USART1)  // Data arrived from P1
-	{
-		// Example 1: Forward received data to P4
-		HAL_UART_Transmit_DMA(&huart2, uart_rx_buf, Size);
-
-		// Example 2: Store to memory (already in uart_rx_buf)
-		// process_data(uart_rx_buf, Size);
-	} else if (huart->Instance == USART2) {
-		// Handle P4 receive if needed
-	}
-
-}
+//void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
+//{
+//    const map_entry_t *e = &g_tx_map[g_map_index];
+//
+//    if (e->kind == MAP_STORE_TO_MEM && e->src == huart) {
+//        // Already in e->mem
+//    }
+//    else if (e->kind == MAP_FWD_TO_PORT && e->src == huart) {
+//        HAL_UART_Transmit_DMA(e->dst, buf_pmem, Size);
+//    }
+//
+//    // Move to next entry
+//    g_map_index++;
+//    MapTx_Advance();
+//}
 
 /* USER CODE END 1 */

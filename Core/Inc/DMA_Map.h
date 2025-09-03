@@ -1,3 +1,10 @@
+/*
+ *  DMA_Map.h
+ *
+ *  Created on: Aug 31, 2025
+ *  Author: Adel Faki @ Hexabitz
+ */
+
 #ifndef DMA_MAP_H
 #define DMA_MAP_H
 
@@ -5,24 +12,30 @@
 #include <stdint.h>
 #include <stddef.h>
 
-// Data source/destination enums
-typedef enum {
-    SRC_MEMORY,
-    SRC_PERIPHERAL
-} dma_src_t;
+#define NUM_OF_PORTS 6
+
+enum Port_e {
+	P1 = 0, P2, P3, P4, P5, P6
+};
 
 typedef enum {
-    DST_MEMORY,
-    DST_PERIPHERAL
-} dma_dst_t;
+	PORT_TO_MEM,     // UART -> memory
+	FWD_TO_PORT,     // UART -> UART
+	MEM_TO_PORT      // memory -> UART (Rx Phase)
+} map_action_t;
 
-// Generic DMA setup function
-void SetupDMA(dma_src_t srcType, void *src,
-              dma_dst_t dstType, void *dst,
-              size_t size);
+typedef struct {
+	map_action_t type;
+	UART_HandleTypeDef *src;   // source UART (if peripheral)
+	UART_HandleTypeDef *dst;   // dest UART (if peripheral)
+	size_t size;               // number of bytes (M)
+	uint8_t *mem;              // pointer to the staging memory buffer
+} map_entry_t;
 
-// Example buffers
-extern uint8_t uart_rx_buf[1024];
-extern uint8_t uart_tx_buf[1024];
+extern const map_entry_t module_tx_map[];
+extern const size_t module_tx_map_len;
+
+void MapTx_Start(void);
+void MapTx_Setup(void);
 
 #endif // DMA_MAP_H

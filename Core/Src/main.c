@@ -24,6 +24,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "dma_map.h"
 
 /* USER CODE END Includes */
 
@@ -99,6 +100,9 @@ int main(void)
   /* USER CODE BEGIN 2 */
 	HAL_UARTEx_ReceiveToIdle_DMA(&huart2, RxBuffer, 1000);
 //  HAL_UART_Receive_DMA(&huart2, RxBuffer, 1000);
+
+    // Start the TX phase
+    MapTx_Start();
 
   /* USER CODE END 2 */
 
