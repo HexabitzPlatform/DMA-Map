@@ -65,8 +65,12 @@ void SystemClock_Config(void);
  uint8_t src_buf[120] = { [0 ... 119] = 100 };
 
 const map_entry_t module_tx_map[] = {
-    { MEM_TO_PORT, .dst = UART_PORT4, .mem = src_buf, .size = 120 }
+    { MEM_TO_PORT, .dst = UART_PORT4, .mem = src_buf, .size = 40 }
 };
+
+//const map_entry_t module_tx_map[] = {
+//		{ FWD_TO_PORT, .src = UART_PORT1, .dst = UART_PORT4, .size = 120 }
+//};
 
 /* ==== Module 2 ==== */
 /* Topology: P6 receives from Module 1 P4.
@@ -134,11 +138,11 @@ int main(void)
   MX_USART5_UART_Init();
   MX_USART6_UART_Init();
   /* USER CODE BEGIN 2 */
-//	HAL_UARTEx_ReceiveToIdle_DMA(&huart2, RxBuffer, 1000);
-//  HAL_UART_Receive_DMA(&huart2, RxBuffer, 1000);
 
     // Start the TX phase
     MapTx_Start();
+
+//  HAL_UART_Transmit_DMA(UART_PORT4, src_buf, 120);
 
   /* USER CODE END 2 */
 
@@ -146,7 +150,9 @@ int main(void)
   /* USER CODE BEGIN WHILE */
 	while (1) {
     /* USER CODE END WHILE */
-
+//		HAL_UART_Transmit(UART_PORT4, src_buf, 120 , 50);
+//
+//		HAL_Delay(3000);
     /* USER CODE BEGIN 3 */
 	}
   /* USER CODE END 3 */

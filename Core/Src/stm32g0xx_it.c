@@ -23,7 +23,6 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 /* USER CODE END Includes */
-#include "dma_map.h"
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN TD */
@@ -87,66 +86,72 @@ extern UART_HandleTypeDef huart6;
 /*           Cortex-M0+ Processor Interruption and Exception Handlers          */
 /******************************************************************************/
 /**
- * @brief This function handles Non maskable interrupt.
- */
-void NMI_Handler(void) {
-	/* USER CODE BEGIN NonMaskableInt_IRQn 0 */
+  * @brief This function handles Non maskable interrupt.
+  */
+void NMI_Handler(void)
+{
+  /* USER CODE BEGIN NonMaskableInt_IRQn 0 */
 
-	/* USER CODE END NonMaskableInt_IRQn 0 */
-	/* USER CODE BEGIN NonMaskableInt_IRQn 1 */
+  /* USER CODE END NonMaskableInt_IRQn 0 */
+  /* USER CODE BEGIN NonMaskableInt_IRQn 1 */
 	while (1) {
 	}
-	/* USER CODE END NonMaskableInt_IRQn 1 */
+  /* USER CODE END NonMaskableInt_IRQn 1 */
 }
 
 /**
- * @brief This function handles Hard fault interrupt.
- */
-void HardFault_Handler(void) {
-	/* USER CODE BEGIN HardFault_IRQn 0 */
+  * @brief This function handles Hard fault interrupt.
+  */
+void HardFault_Handler(void)
+{
+  /* USER CODE BEGIN HardFault_IRQn 0 */
 
-	/* USER CODE END HardFault_IRQn 0 */
-	while (1) {
-		/* USER CODE BEGIN W1_HardFault_IRQn 0 */
-		/* USER CODE END W1_HardFault_IRQn 0 */
-	}
+  /* USER CODE END HardFault_IRQn 0 */
+  while (1)
+  {
+    /* USER CODE BEGIN W1_HardFault_IRQn 0 */
+    /* USER CODE END W1_HardFault_IRQn 0 */
+  }
 }
 
 /**
- * @brief This function handles System service call via SWI instruction.
- */
-void SVC_Handler(void) {
-	/* USER CODE BEGIN SVC_IRQn 0 */
+  * @brief This function handles System service call via SWI instruction.
+  */
+void SVC_Handler(void)
+{
+  /* USER CODE BEGIN SVC_IRQn 0 */
 
-	/* USER CODE END SVC_IRQn 0 */
-	/* USER CODE BEGIN SVC_IRQn 1 */
+  /* USER CODE END SVC_IRQn 0 */
+  /* USER CODE BEGIN SVC_IRQn 1 */
 
-	/* USER CODE END SVC_IRQn 1 */
+  /* USER CODE END SVC_IRQn 1 */
 }
 
 /**
- * @brief This function handles Pendable request for system service.
- */
-void PendSV_Handler(void) {
-	/* USER CODE BEGIN PendSV_IRQn 0 */
+  * @brief This function handles Pendable request for system service.
+  */
+void PendSV_Handler(void)
+{
+  /* USER CODE BEGIN PendSV_IRQn 0 */
 
-	/* USER CODE END PendSV_IRQn 0 */
-	/* USER CODE BEGIN PendSV_IRQn 1 */
+  /* USER CODE END PendSV_IRQn 0 */
+  /* USER CODE BEGIN PendSV_IRQn 1 */
 
-	/* USER CODE END PendSV_IRQn 1 */
+  /* USER CODE END PendSV_IRQn 1 */
 }
 
 /**
- * @brief This function handles System tick timer.
- */
-void SysTick_Handler(void) {
-	/* USER CODE BEGIN SysTick_IRQn 0 */
+  * @brief This function handles System tick timer.
+  */
+void SysTick_Handler(void)
+{
+  /* USER CODE BEGIN SysTick_IRQn 0 */
 
-	/* USER CODE END SysTick_IRQn 0 */
-	HAL_IncTick();
-	/* USER CODE BEGIN SysTick_IRQn 1 */
+  /* USER CODE END SysTick_IRQn 0 */
+  HAL_IncTick();
+  /* USER CODE BEGIN SysTick_IRQn 1 */
 
-	/* USER CODE END SysTick_IRQn 1 */
+  /* USER CODE END SysTick_IRQn 1 */
 }
 
 /******************************************************************************/
@@ -157,93 +162,99 @@ void SysTick_Handler(void) {
 /******************************************************************************/
 
 /**
- * @brief This function handles DMA1 channel 1 interrupt.
- */
-void DMA1_Channel1_IRQHandler(void) {
-	/* USER CODE BEGIN DMA1_Channel1_IRQn 0 */
+  * @brief This function handles DMA1 channel 1 interrupt.
+  */
+void DMA1_Channel1_IRQHandler(void)
+{
+  /* USER CODE BEGIN DMA1_Channel1_IRQn 0 */
 
-	/* USER CODE END DMA1_Channel1_IRQn 0 */
-	HAL_DMA_IRQHandler(&hdma_usart1_rx);
-	/* USER CODE BEGIN DMA1_Channel1_IRQn 1 */
+  /* USER CODE END DMA1_Channel1_IRQn 0 */
+  HAL_DMA_IRQHandler(&hdma_usart1_rx);
+  /* USER CODE BEGIN DMA1_Channel1_IRQn 1 */
 
-	/* USER CODE END DMA1_Channel1_IRQn 1 */
+  /* USER CODE END DMA1_Channel1_IRQn 1 */
 }
 
 /**
- * @brief This function handles DMA1 channel 2 and channel 3 interrupts.
- */
-void DMA1_Channel2_3_IRQHandler(void) {
-	/* USER CODE BEGIN DMA1_Channel2_3_IRQn 0 */
+  * @brief This function handles DMA1 channel 2 and channel 3 interrupts.
+  */
+void DMA1_Channel2_3_IRQHandler(void)
+{
+  /* USER CODE BEGIN DMA1_Channel2_3_IRQn 0 */
 
-	/* USER CODE END DMA1_Channel2_3_IRQn 0 */
-	HAL_DMA_IRQHandler(&hdma_usart1_tx);
-	HAL_DMA_IRQHandler(&hdma_usart2_rx);
-	/* USER CODE BEGIN DMA1_Channel2_3_IRQn 1 */
+  /* USER CODE END DMA1_Channel2_3_IRQn 0 */
+  HAL_DMA_IRQHandler(&hdma_usart1_tx);
+  HAL_DMA_IRQHandler(&hdma_usart2_rx);
+  /* USER CODE BEGIN DMA1_Channel2_3_IRQn 1 */
 
-	/* USER CODE END DMA1_Channel2_3_IRQn 1 */
+  /* USER CODE END DMA1_Channel2_3_IRQn 1 */
 }
 
 /**
- * @brief This function handles DMA1 Ch4 to Ch7, DMA2 Ch1 to Ch5 and DMAMUX1 Overrun Interrupts.
- */
-void DMA1_Ch4_7_DMA2_Ch1_5_DMAMUX1_OVR_IRQHandler(void) {
-	/* USER CODE BEGIN DMA1_Ch4_7_DMA2_Ch1_5_DMAMUX1_OVR_IRQn 0 */
+  * @brief This function handles DMA1 Ch4 to Ch7, DMA2 Ch1 to Ch5 and DMAMUX1 Overrun Interrupts.
+  */
+void DMA1_Ch4_7_DMA2_Ch1_5_DMAMUX1_OVR_IRQHandler(void)
+{
+  /* USER CODE BEGIN DMA1_Ch4_7_DMA2_Ch1_5_DMAMUX1_OVR_IRQn 0 */
 
-	/* USER CODE END DMA1_Ch4_7_DMA2_Ch1_5_DMAMUX1_OVR_IRQn 0 */
-	HAL_DMA_IRQHandler(&hdma_usart2_tx);
-	HAL_DMA_IRQHandler(&hdma_usart3_rx);
-	HAL_DMA_IRQHandler(&hdma_usart3_tx);
-	HAL_DMA_IRQHandler(&hdma_usart4_rx);
-	HAL_DMA_IRQHandler(&hdma_usart4_tx);
-	HAL_DMA_IRQHandler(&hdma_usart5_rx);
-	HAL_DMA_IRQHandler(&hdma_usart5_tx);
-	HAL_DMA_IRQHandler(&hdma_usart6_rx);
-	HAL_DMA_IRQHandler(&hdma_usart6_tx);
-	/* USER CODE BEGIN DMA1_Ch4_7_DMA2_Ch1_5_DMAMUX1_OVR_IRQn 1 */
+  /* USER CODE END DMA1_Ch4_7_DMA2_Ch1_5_DMAMUX1_OVR_IRQn 0 */
+  HAL_DMA_IRQHandler(&hdma_usart2_tx);
+  HAL_DMA_IRQHandler(&hdma_usart3_rx);
+  HAL_DMA_IRQHandler(&hdma_usart3_tx);
+  HAL_DMA_IRQHandler(&hdma_usart4_rx);
+  HAL_DMA_IRQHandler(&hdma_usart4_tx);
+  HAL_DMA_IRQHandler(&hdma_usart5_rx);
+  HAL_DMA_IRQHandler(&hdma_usart5_tx);
+  HAL_DMA_IRQHandler(&hdma_usart6_rx);
+  HAL_DMA_IRQHandler(&hdma_usart6_tx);
+  /* USER CODE BEGIN DMA1_Ch4_7_DMA2_Ch1_5_DMAMUX1_OVR_IRQn 1 */
 
-	/* USER CODE END DMA1_Ch4_7_DMA2_Ch1_5_DMAMUX1_OVR_IRQn 1 */
+  /* USER CODE END DMA1_Ch4_7_DMA2_Ch1_5_DMAMUX1_OVR_IRQn 1 */
 }
 
 /**
- * @brief This function handles USART1 global interrupt / USART1 wake-up interrupt through EXTI line 25.
- */
-void USART1_IRQHandler(void) {
-	/* USER CODE BEGIN USART1_IRQn 0 */
+  * @brief This function handles USART1 global interrupt / USART1 wake-up interrupt through EXTI line 25.
+  */
+void USART1_IRQHandler(void)
+{
+  /* USER CODE BEGIN USART1_IRQn 0 */
 
-	/* USER CODE END USART1_IRQn 0 */
-	HAL_UART_IRQHandler(&huart1);
-	/* USER CODE BEGIN USART1_IRQn 1 */
+  /* USER CODE END USART1_IRQn 0 */
+  HAL_UART_IRQHandler(&huart1);
+  /* USER CODE BEGIN USART1_IRQn 1 */
 
-	/* USER CODE END USART1_IRQn 1 */
+  /* USER CODE END USART1_IRQn 1 */
 }
 
 /**
- * @brief This function handles USART2 + LPUART2 Interrupt.
- */
-void USART2_LPUART2_IRQHandler(void) {
-	/* USER CODE BEGIN USART2_LPUART2_IRQn 0 */
+  * @brief This function handles USART2 + LPUART2 Interrupt.
+  */
+void USART2_LPUART2_IRQHandler(void)
+{
+  /* USER CODE BEGIN USART2_LPUART2_IRQn 0 */
 
-	/* USER CODE END USART2_LPUART2_IRQn 0 */
-	HAL_UART_IRQHandler(&huart2);
-	/* USER CODE BEGIN USART2_LPUART2_IRQn 1 */
+  /* USER CODE END USART2_LPUART2_IRQn 0 */
+  HAL_UART_IRQHandler(&huart2);
+  /* USER CODE BEGIN USART2_LPUART2_IRQn 1 */
 
-	/* USER CODE END USART2_LPUART2_IRQn 1 */
+  /* USER CODE END USART2_LPUART2_IRQn 1 */
 }
 
 /**
- * @brief This function handles USART3, USART4, USART5, USART6, LPUART1 globlal Interrupts (combined with EXTI 28).
- */
-void USART3_4_5_6_LPUART1_IRQHandler(void) {
-	/* USER CODE BEGIN USART3_4_5_6_LPUART1_IRQn 0 */
+  * @brief This function handles USART3, USART4, USART5, USART6, LPUART1 globlal Interrupts (combined with EXTI 28).
+  */
+void USART3_4_5_6_LPUART1_IRQHandler(void)
+{
+  /* USER CODE BEGIN USART3_4_5_6_LPUART1_IRQn 0 */
 
-	/* USER CODE END USART3_4_5_6_LPUART1_IRQn 0 */
-	HAL_UART_IRQHandler(&huart3);
-	HAL_UART_IRQHandler(&huart4);
-	HAL_UART_IRQHandler(&huart5);
-	HAL_UART_IRQHandler(&huart6);
-	/* USER CODE BEGIN USART3_4_5_6_LPUART1_IRQn 1 */
+  /* USER CODE END USART3_4_5_6_LPUART1_IRQn 0 */
+  HAL_UART_IRQHandler(&huart3);
+  HAL_UART_IRQHandler(&huart4);
+  HAL_UART_IRQHandler(&huart5);
+  HAL_UART_IRQHandler(&huart6);
+  /* USER CODE BEGIN USART3_4_5_6_LPUART1_IRQn 1 */
 
-	/* USER CODE END USART3_4_5_6_LPUART1_IRQn 1 */
+  /* USER CODE END USART3_4_5_6_LPUART1_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */
