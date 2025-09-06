@@ -60,9 +60,10 @@ void SystemClock_Config(void);
 /* USER CODE BEGIN 0 */
 
 
-
-/* ==== Module 1 (source) ==== */
- uint8_t src_buf[120] = { [0 ... 119] = 100 };
+/*****************************************************************************/
+/**************************** Module 1 (source) ******************************/
+/*****************************************************************************/
+ uint8_t src_buf[1000] = { [0 ... 999] = 123 };
 
 const map_entry_t module_tx_map[] = {
     { MEM_TO_PORT, .dst = UART_PORT4, .mem = src_buf, .size = 40 }
@@ -72,7 +73,11 @@ const map_entry_t module_tx_map[] = {
 //		{ FWD_TO_PORT, .src = UART_PORT1, .dst = UART_PORT4, .size = 120 }
 //};
 
-/* ==== Module 2 ==== */
+
+
+/*****************************************************************************/
+/********************************* Module 2 **********************************/
+/*****************************************************************************/
 /* Topology: P6 receives from Module 1 P4.
    Then: store first 40, forward next 40 to Module 3 via P2,
          forward last 40 to Module 4 via P4. */
@@ -87,12 +92,20 @@ const map_entry_t module_tx_map[] = {
 //    { FWD_TO_PORT, .src = UART_PORT6, .dst = UART_PORT4, .size = 40 },
 //};
 
-/* Module 3 : */
+
+
+/*****************************************************************************/
+/********************************* Module 3 **********************************/
+/*****************************************************************************/
 //const map_entry_t module_tx_map[] = {
 //    { PORT_TO_MEM, .src = UART_PORT5, .mem = port_mem_buf[P5], .size = 40 }
 //};
 
-/* Module 4 : */
+
+
+/*****************************************************************************/
+/********************************* Module 4 **********************************/
+/*****************************************************************************/
 //const map_entry_t module_tx_map[] = {
 //    { PORT_TO_MEM, .src = UART_PORT5, .mem = port_mem_buf[P5], .size = 40 }
 //};
@@ -140,7 +153,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
     // Start the TX phase
-    MapTx_Start();
+//    MapTx_Start();
 
 //  HAL_UART_Transmit_DMA(UART_PORT4, src_buf, 120);
 
@@ -150,9 +163,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
 	while (1) {
     /* USER CODE END WHILE */
-//		HAL_UART_Transmit(UART_PORT4, src_buf, 120 , 50);
-//
-//		HAL_Delay(3000);
+
     /* USER CODE BEGIN 3 */
 	}
   /* USER CODE END 3 */
